@@ -1,0 +1,10 @@
+<% aiid = ai.id %> <%# ID of the chatbot %>
+
+<div class="h-96 overflow-y-scroll w-full flex-row items-stretch" id="chat_messages" data-controller="chat" data-chat-target="window">
+<%= turbo_stream_from "chat" %>
+    <% if messages %>
+        <% messages.each do |message| %>
+            <%= render partial: "queries/session_message", locals: {message: message, aiid: aiid} %>
+        <% end %>
+    <% end %>
+</div>

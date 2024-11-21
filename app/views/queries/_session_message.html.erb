@@ -1,0 +1,5 @@
+<div class="max-w-3/4 m-2 flex <%= message.user_id == aiid ? 'justify-start' : 'justify-end' %> mb-2">
+    <div id="ai_response_<%= message.id %>" class="<%= message.user_id == aiid  ? 'bg-gray-200 text-black' : 'bg-blue-500 text-white' %> rounded-lg px-4 py-2 max-w-xs shadow-md">
+        <p class="text-sm"> <%= message.content %> </p>
+    </div>
+</div>

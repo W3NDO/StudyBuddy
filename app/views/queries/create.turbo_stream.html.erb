@@ -1,0 +1,4 @@
+<!-- app/views/queries/_response.html.erb -->
+<%= turbo_stream.append "sambanova-output" do %>
+  <p><%= @chunk %></p>
+<% end %>

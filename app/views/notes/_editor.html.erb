@@ -1,0 +1,21 @@
+<% @note = note %>
+<div class=" rounded-lg max-h-72">
+  <div class="bg-blue-600 text-white p-2 py-4">
+    <h2 class="text-lg font-semibold"> <%= session.session_name %> <span class="text-sm text-gray-300"> (autosave enabled) </span> </h2>
+    <p class="text-sm "> <%= session.session_description %>  </p>
+  </div>
+
+  <%= form_with(model: @note, method: "patch", remote: true, class: "p-8 h-full" ) do |form| %>
+    <!-- Content Field (Using Trix) -->
+    <div class="mb-4 field" >
+      <div class="w-full h-64" data-controller="autosave" data-autosave-url= <%= note_path(@note.id) %> >
+        <%= form.rich_text_area :content, "data-autosave-target": "content", "data-action": "trix-change->autosave#startAutosave", class: "trix-content overflow-y-auto h-full w-full p-4 bg-gray-200 border border-gray-300 rounded-lg trix-editor-custom" %>
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="mt-6">
+      <%= form.submit "Save Note", class: "w-full mt-2 bg-blue-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700" %>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,2 @@
+module SessionMessagesHelper
+end

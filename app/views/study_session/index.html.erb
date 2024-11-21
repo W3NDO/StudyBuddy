@@ -1,0 +1,38 @@
+<div class="w-full">
+  <% unless @sessions.empty? %>
+    <section>
+      <div class="w-full p-4 m-2 text-center " >  
+        <%= link_to "New Study Session" , new_study_session_path, class: " shadow-md text-black bg-white text-lg p-2 rounded hover:bg-gray-300" %>
+      </div>
+      <div class="overflow-y-scroll max-h-96 bg-blue-400 p-4 rounded-md">
+        <% @sessions.each do |session| %>
+          <div class="flex justify-end w-full">
+            <div class="bg-white rounded w-full m-2 p-3 flex justify-between">
+              <p class="text-xl"> <%= session.session_name %> </p>
+              <p class="text-sm text-gray-600 align-bottom"> <%= session.updated_at.to_date %> </p>
+            </div>
+            
+            <div class=" rounded m-2 p-3 flex justify-between bg-blue-300">
+              <%= link_to study_session_path(session.id), class: "text-white text-3xl" do %>
+                <i class="fa-solid fa-book"></i>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </section>
+  <% else %>
+    <section>
+      <div class="flex flex-col justify-around w-full">
+        <div class="text-center bg-white p-2 rounded m-6" >
+          <h3 class="text-2xl" > 
+            You do not appear to have any study sessions yet. Be not afraid though, we can get you started right away 
+          </h3> 
+        </div> 
+        <div class="w-full p-4 m-2 text-center " >  
+          <%= link_to "New Study Session" , new_study_session_path, class: "text-black bg-white text-lg p-2 rounded hover:bg-gray-300" %>
+        </div>
+      </div>
+    </section>
+  <% end %>
+</div>

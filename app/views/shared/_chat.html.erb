@@ -1,0 +1,24 @@
+<div class="w-full max-w-md bg-white rounded-lg shadow-lg overflow-hidden m-2"> 
+    <!-- Chat Header -->
+    <div class="bg-blue-600 text-white text-center py-4 ">
+    <h1 class="text-lg font-semibold">Ask SB1 for help :)</h1>
+    <p class="text-sm"> SB1 may make some mistakes </p>
+    </div>
+
+    <!-- Chat History -->
+    <div class="w-full" >
+        <%= render partial: "queries/session_messages", locals: {messages: messages, ai: @ai} %>
+    </div>
+    
+    <!-- Chat Input -->
+    <div class="flex items-center p-4 border-t border-gray-200" >
+        <%= form_with url: queries_path, method: :post, data: { turbo_frame: "query_frame" }, local: false, class: "flex items-center justify-between w-full" do |form| %>
+            <%= form.text_field :query, placeholder: "How can we help you?", class: "flex-grow border border-gray-300 rounded-lg p-2 outline-none focus:ring-2 focus:ring-blue-600", data: {"chat-target": "input"} %>
+            <%= hidden_field_tag(:topic, topic ) %>
+            <%= hidden_field_tag(:session_id, session.id) %>
+            <%= form.submit( class: "ml-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700", value: "Send") do %>
+                <i class="fa-solid fa-paper-plane"></i>
+            <% end %>
+        <% end %>
+    </div>
+</div>

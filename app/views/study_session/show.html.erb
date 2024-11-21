@@ -1,0 +1,10 @@
+<div class="w-full max-w-full max-h-72">
+  <div class="flex flex-row justify-between w-full">
+     <div class="w-full max-w-full bg-white rounded-lg overflow-y-scroll m-2">
+      <%= render partial: "notes/editor", locals: {note: @note, session: @session} %>
+    </div>
+
+    <!-- Chat with SB1 -->
+    <%= render partial: "shared/chat", locals: {topic: @session.topic, session: @session, messages: @messages, ai: @ai} %>
+  </div>
+</div>

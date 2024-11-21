@@ -1,0 +1,49 @@
+<div class="w-full h-full">
+  <section class="bg-blue-600 text-white py-20 text-center mb-8 rrounded-full">
+    <h2 class="text-4xl font-bold mb-4">Supercharge Your Learning with Study Buddy</h2>
+    <p class="mb-6">AI-driven insights and personalized study plans designed to make every minute count.</p>
+    <%= link_to "Get Started Now", study_session_index_path, class: "bg-white text-blue-600 px-6 py-3 rounded hover:bg-gray-100" %>
+  </section>
+
+  <% if current_user and current_user.has_previous_study_session? %>
+    <section class="bg-blue-600 text-center p-4">
+      <h2 class="text-2xl font-bold py-4 text-white"> Get back to your last study session </h2>
+      <% last_session = current_user.get_last_study_session %>
+      <div class="flex justify-end w-full">
+        <div class="bg-white rounded w-full m-2 p-3 flex justify-between text-center">
+          <p class="text-xl px-2 font-bold "> <%= last_session.session_name %> </p>
+          <p class="text-sm text-gray-300 align-bottom"> <%= last_session.updated_at.to_date %> </p>
+        </div>
+        
+        <div class=" rounded m-2 p-3 flex justify-between bg-blue-300">
+          <%= link_to study_session_path(last_session.id), class: "text-white text-3xl" do %>
+            <i class="fa-solid fa-book"></i>
+          <% end %>
+        </div>
+      </div>
+    </section>
+  <% end %>
+  <!-- Features Section -->
+  <section id="features" class="py-20 container mx-auto">
+    <h2 class="text-3xl font-bold text-center mb-10">Platform Features</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div class="bg-white p-6 rounded-lg shadow-md">
+        <h3 class="text-xl font-semibold mb-2">Personalized Study Plans</h3>
+        <p>Learn at your own pace with tailored study paths.</p>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow-md">
+        <h3 class="text-xl font-semibold mb-2">AI-Powered Insights</h3>
+        <p>Understand your strengths and focus on improvement areas.</p>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow-md">
+        <h3 class="text-xl font-semibold mb-2">Real-Time Progress Tracking</h3>
+        <p>Stay on top of your goals with data-driven analytics.</p>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow-md">
+        <h3 class="text-xl font-semibold mb-2">Interactive Tools</h3>
+        <p>Engaging flashcards, quizzes, and practice exams.</p>
+      </div>
+    </div>
+  </section>
+
+</div>

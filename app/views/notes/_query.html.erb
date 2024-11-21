@@ -1,0 +1,16 @@
+<h1>Ask the AI</h1>
+
+<%= form_with url: queries_path, method: :post, data: { turbo_frame: "query_frame" }, local: false do |form| %>
+  <%= form.text_field :query, placeholder: "Type your query here", class: "border p-2 w-full" %>
+  <%= form.submit "Send", class: "mt-2 bg-blue-500 text-white px-4 py-2 rounded" %>
+<% end %>
+
+<!-- Turbo Frame for showing AI responses -->
+<div class="mt-4">
+  <%= turbo_frame_tag "query_frame" do %>
+    <!-- Placeholder content that gets replaced by streaming responses -->
+    <div id="ai-response" class="border p-4 rounded bg-gray-100">
+      <!-- Streaming responses will appear here -->
+    </div>
+  <% end %>
+</div>
