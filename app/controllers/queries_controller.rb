@@ -34,17 +34,26 @@ class QueriesController < ApplicationController
     chunks = ""
         # Stream response
     @service.make_request(query, topic) do |chunk|
+      Rails.logger.debug("Received chunk: #{chunk}")
       # Broadcast each chunk to the Turbo Stream
       chunks += chunk
-      Turbo::StreamsChannel.broadcast_append_to(
-        "chat", # Matches the target in the view
-        target: "ai_response_#{@ai_message.id}",
-        partial: "queries/ai_response",
-        locals: {chunk: chunk}
-        )
+      pp "Chunk #{chunk}"
+      # Turbo::StreamsChannel.broadcast_append_to(
+      #   "chat", # Matches the target in the view
+      #   target: "ai_response_#{@ai_message.id}",
+      #   partial: "queries/ai_response",
+      #   locals: {chunk: chunk}
+      #   )
       end
     @ai_message.content = chunks
     @ai_message.save
+
+    Turbo::StreamsChannel.broadcast_append_to(
+      "chat", 
+      target: "ai_response_#{@ai_message.id}",
+      partial: "queries/ai_response",
+      locals: {chunk: @ai_message.content}
+    )
     head :ok # Signal successful processing
     
     ensure

@@ -87,3 +87,7 @@ gem "stimulus_reflex", "~> 3.5"
 gem "action-cable-redis-backport", "~> 1"
 
 gem "redis-session-store", "~> 0.11.5"
+
+gem "dockerfile-rails", ">= 1.6", :group => :development
+
+gem "aws-sdk-s3", "~> 1.173", :require => false

@@ -2,7 +2,7 @@
 <div class=" rounded-lg max-h-72">
   <div class="bg-blue-600 text-white p-2 py-4">
     <h2 class="text-lg font-semibold"> <%= session.session_name %> <span class="text-sm text-gray-300"> (autosave enabled) </span> </h2>
-    <p class="text-sm "> <%= session.session_description %>  </p>
+    <p class="text-sm "> <%= session.session_description %> ( Topics concerned:  <span class="text-sm text-gray-300"> <%= session.topic %> </span> ) </p>
   </div>
 
   <%= form_with(model: @note, method: "patch", remote: true, class: "p-8 h-full" ) do |form| %>

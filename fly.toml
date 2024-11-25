@@ -1,9 +1,9 @@
-# fly.toml app configuration file generated for study-buddy on 2024-11-05T09:05:46+03:00
+# fly.toml app configuration file generated for studybuddy-autumn-glitter-7568 on 2024-11-22T21:13:52+03:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'study-buddy'
+app = 'studybuddy-autumn-glitter-7568'
 primary_region = 'jnb'
 console_command = '/rails/bin/rails console'
 

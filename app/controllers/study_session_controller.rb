@@ -38,6 +38,6 @@ class StudySessionController < ApplicationController
   private
 
   def study_session_params
-    params.require(:study_session).permit(:session_name, :session_description)
+    params.require(:study_session).permit(:session_name, :session_description, :topic)
   end
 end
